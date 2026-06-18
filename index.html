@@ -1,367 +1,361 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Manikanta Loya</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Manikanta Loya" />
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik&family=Trirong&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <title>loya@dev:~ | Manikanta Loya</title>
+    <meta name="author" content="Manikanta Loya">
+    <meta name="description" content="Manikanta Loya, ML Engineer at Meta. Writing about ML systems, LLMs, and distributed training.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/terminal.css">
 </head>
-
 <body>
-    <div class="sticky">
-        <canvas id=c></canvas>
+
+<div class="ide">
+
+    <!-- ── TITLE BAR ─────────────────────────────────────── -->
+    <div class="title-bar">
+        <div class="wb-group">
+            <span class="wb wb-close"></span>
+            <span class="wb wb-min"></span>
+            <span class="wb wb-max"></span>
+        </div>
+        <button class="btn-sidebar" onclick="toggleSidebar()" title="Toggle sidebar">☰</button>
+        <div class="title-label">loya@dev:~</div>
+        <button class="btn-theme" onclick="toggleTheme()">
+            <span class="icon-dark">🌙</span><span class="icon-light">☀️</span>
+        </button>
     </div>
 
-    <div id="colorlib-page">
-        <div>
-            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar"
-                aria-expanded="false" aria-controls="navbar"><i></i></a>
-            <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-                <div class="text-center">
-                    <div class="author-img" style="background-image: url(images/personal/me.jpg);"></div>
-                    <h1 id="colorlib-logo"><a href="index.html">Manikanta Loya</a></h1>
-                    <span class="position">Student Researcher<br>
-                        <a href="https://uci.edu/">UC Irvine</a></span>
-                </div>
-                <nav id="colorlib-main-menu" role="navigation" class="navbar">
-                    <div id="navbar" class="collapse">
-                        <ul>
-                            <li><a href="#" data-nav-section="about" class="navbar-item">About</a></li>
-                            <!-- <li><a href="#" data-nav-section="research_interests" class="navbar-item">Research
-                                    interests</a>
-                            </li> -->
-                            <li><a href="#" data-nav-section="work_experience" class="navbar-item">Work experience</a>
-                            </li>
-                            <!-- <li><a href="#" data-nav-section="education" class="navbar-item">Education</a></li> -->
-                            <li><a href="#" data-nav-section="publications" class="navbar-item">Publications</a></li>
-                            <!-- <li><a href="#" data-nav-section="patents" class="navbar-item">Patents</a></li> -->
-                            <li><a href="#" data-nav-section="projects" class="navbar-item">Projects</a></li>
-                            <!-- <li><a href="#" data-nav-section="skills" class="navbar-item">Skills</a></li> -->
-                        </ul>
-                    </div>
-                </nav>
+    <!-- ── IDE BODY ───────────────────────────────────────── -->
+    <div class="ide-body">
 
-                <div class="colorlib-footer">
+        <!-- FILE TREE -->
+        <nav class="file-tree">
+            <div class="tree-root">~/manikanta/</div>
+            <ul class="tree-list">
+
+                <li>
+                    <div class="tree-item" data-section="about" onclick="selectFile(this, 'about')">
+                        <span class="fi">📄</span> about_me.md
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tree-item folder-hd" onclick="toggleFolder(this)">
+                        <span class="arrow open">▾</span> experience/
+                    </div>
+                    <ul class="subtree">
+                        <li><div class="tree-item sub" data-section="meta" onclick="selectFile(this, 'meta')">
+                            <span class="fi">📄</span> 01_meta.md
+                        </div></li>
+                        <li><div class="tree-item sub" data-section="evidium" onclick="selectFile(this, 'evidium')">
+                            <span class="fi">📄</span> 02_evidium.md
+                        </div></li>
+                        <li><div class="tree-item sub" data-section="uci" onclick="selectFile(this, 'uci')">
+                            <span class="fi">📄</span> 03_uci_research.md
+                        </div></li>
+                        <li><div class="tree-item sub" data-section="amazon" onclick="selectFile(this, 'amazon')">
+                            <span class="fi">📄</span> 04_amazon.md
+                        </div></li>
+                        <li><div class="tree-item sub" data-section="samsung" onclick="selectFile(this, 'samsung')">
+                            <span class="fi">📄</span> 05_samsung.md
+                        </div></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="tree-item" data-section="publications" onclick="selectFile(this, 'publications')">
+                        <span class="fi">📄</span> publications.md
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tree-item folder-hd" onclick="toggleFolder(this)">
+                        <span class="arrow open">▾</span> projects/
+                    </div>
+                    <ul class="subtree">
+                        <li><div class="tree-item sub" data-section="proj_cyclegan" onclick="selectFile(this, 'proj_cyclegan')">
+                            <span class="fi">🐍</span> cycle_gan.py
+                        </div></li>
+                        <li><div class="tree-item sub" data-section="proj_chat" onclick="selectFile(this, 'proj_chat')">
+                            <span class="fi">☕</span> dist_chat.java
+                        </div></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="tree-item accent" onclick="window.open('doc/Resume_Manikanta_Loya_ML.pdf')">
+                        <span class="fi">📋</span> resume.pdf
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tree-item accent" data-section="contact" onclick="selectFile(this, 'contact')">
+                        <span class="fi">⚡</span> contact.sh
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- CONTENT AREA -->
+        <main class="content-area">
+
+            <!-- tab bar -->
+            <div class="tab-bar">
+                <div class="tab">
+                    <span id="tab-icon">📄</span>
+                    <span id="tab-name">about_me.md</span>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════
+                 PANELS
+            ══════════════════════════════════════════════ -->
+
+            <!-- ABOUT -->
+            <div class="panel" id="panel-about">
+                <div class="panel-inner">
+                    <div class="cmt"># about_me.md</div>
+                    <br>
+                    <h1>Manikanta Loya</h1>
+                    <p class="lead">Software Engineer, ML &nbsp;@&nbsp; <span class="kw">Meta</span> &nbsp;·&nbsp; Menlo Park, CA</p>
+                    <hr class="divider">
+                    <p>Hey Hi!, I am <strong>Mani</strong>. I build and optimize ML systems at Meta: feature pipelines, multi-agent LLM systems, and query infrastructure at scale.</p>
+                    <p>Before Meta, I was an ML Research Engineer at <strong>Evidium</strong> (healthcare AI, SF): clinical NEL pipelines, RAG chatbots, and distributed training across multi-node A800 GPUs.</p>
+                    <p>MS in CS (4.0 GPA) from <strong>UC Irvine</strong>. Researched adversarial ML security on code LLMs and cognitive behavior of language models under Prof. Sameer Singh and Prof. Richard Futrell, published at EMNLP Findings 2023 and AAAI EAAI 2023. Undergrad in Electronics Engineering at <strong>IIT BHU Varanasi</strong>.</p>
+                    <p>I care about ML systems that work at scale and writing clearly about what I learn along the way.</p>
+                    <p>Outside work: <a href="https://www.chess.com/member/manikantaloya" class="tl">chess</a> &nbsp;·&nbsp; hiking &nbsp;·&nbsp; <a href="https://www.pinterest.com/mani6918/art/" class="tl">art</a></p>
+
+                    <div class="gap"></div>
+                    <h2>$ skills --list</h2>
+                    <div class="skills">
+                        <div class="sk-row"><span class="sk-key">ml_frameworks</span><span class="sk-val">PyTorch · TensorFlow · JAX · HuggingFace · scikit-learn · OpenCV</span></div>
+                        <div class="sk-row"><span class="sk-key">llm_nlp</span><span class="sk-val">RAG · RLHF · DPO · Fine-tuning · vLLM · LangChain · FAISS · SGLang</span></div>
+                        <div class="sk-row"><span class="sk-key">distributed</span><span class="sk-val">FSDP · DeepSpeed · DDP · Ray · Tensor/Data Parallelism · CUDA</span></div>
+                        <div class="sk-row"><span class="sk-key">cloud_infra</span><span class="sk-val">AWS · GCP · Kubernetes · Docker · Kafka · Spark · Hadoop · CI/CD</span></div>
+                        <div class="sk-row"><span class="sk-key">languages</span><span class="sk-val">Python · Rust · C++ · Java · CUDA · SQL · Presto · BigQuery</span></div>
+                    </div>
+
+                    <div class="gap"></div>
+                    <h2>$ links</h2>
+                    <div class="skills">
+                        <div class="sk-row"><span class="sk-key">github</span><span class="sk-val"><a href="https://github.com/manikanta-72" class="tl">github.com/manikanta-72</a></span></div>
+                        <div class="sk-row"><span class="sk-key">linkedin</span><span class="sk-val"><a href="https://www.linkedin.com/in/manikantaloya/" class="tl">linkedin.com/in/manikantaloya</a></span></div>
+                        <div class="sk-row"><span class="sk-key">google_scholar</span><span class="sk-val"><a href="https://scholar.google.com/citations?user=Z4OjKfcAAAAJ&hl=en" class="tl">Z4OjKfcAAAAJ</a></span></div>
+                        <div class="sk-row"><span class="sk-key">chess</span><span class="sk-val"><a href="https://www.chess.com/member/manikantaloya" class="tl">chess.com/member/manikantaloya</a></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- META -->
+            <div class="panel" id="panel-meta">
+                <div class="panel-inner">
+                    <div class="cmt"># experience/01_meta.md</div>
+                    <br>
+                    <h1>Software Engineer, Machine Learning</h1>
+                    <p class="lead"><span class="kw">Meta</span> &nbsp;·&nbsp; Menlo Park, CA &nbsp;·&nbsp; Jun 2025 – Present</p>
+                    <hr class="divider">
                     <ul>
-                        <li><a href="https://github.com/manikanta-72"><i class="icon-github"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/manikantaloya/"><i class="icon-linkedin22"></i></a></li>
-                        <!--<li><a href="https://scholar.google.com/citations?user=YsbtW6cAAAAJ&hl=en"><img
-                                    src="images/icons/google_scholar_icon.png" style="width:18px;height:18px;"></a></li> -->
-                        <li><a href="https://www.pinterest.com/mani6918/art/"><i class="icon-pinterest"></i></a></li>
-                        <!--<li><a href="https://www.youtube.com/channel/UCbu9MmNckvyhnCFILfrGlig"><i
-                                    class="icon-youtube"></i></a></li>
-                        <li><a href="https://www.twitch.tv/asuna_fps"><i class="icon-twitch"></i></a></li> -->
+                        <li>Optimized ML feature pipelines by eliminating distributed query bottlenecks and redesigning feature materialization, saving <strong>$1.3M ARR</strong> and reducing compute by <strong>~50%</strong>.</li>
+                        <li>Built a Reflexion-style <strong>multi-agent LLM system</strong> where a routing agent orchestrates tool-equipped sub-agents for autonomous alert diagnosis with a self-correction loop, reducing human triage time by <strong>80%</strong>.</li>
+                        <li>Designed metadata-driven <strong>O(1) query optimizations</strong>, cutting latency by <strong>~1000x</strong> on large tables and eliminating debugging bottlenecks across hundreds of daily Meta-scale queries.</li>
                     </ul>
                 </div>
-            </aside>
-        </div>
-
-        <div class="container-wrap">
-            <div id="colorlib-main">
-                <section class="colorlib-about" data-section="about">
-                    <div class="colorlib-narrow-content">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInRight">
-                                    <div class="col-md-12">
-                                        <div class="about-desc">
-                                            <h2 class="colorlib-heading">Little About Me</h2>
-                                            <p>
-                                                <strong>Hey hi, Nice meeting you!</strong> Hope you are having a great time.
-                                            </p>
-                                            <p>
-                                                My name is <strong>Manikanta Loya</strong>, a second year MS in CS student at <strong>University of California Irvine</strong>.
-                                                Currently, I work as Graduate Student Researcher, advised by Dr. Sameer Singh, at UCI NLP lab. The companies I have worked for in the past
-                                                include Samsung Research & Amazon. I completed my bachelor's in Electronics Engineering from the
-                                                <strong>Indian Institute of Technology Varanasi, India</strong>.<br>
-                                                I am proficient in Python C++ JAVA, JavaScript, R, Julia, C#, and other 351 programming languages.
-                                                Surprised ? don't be, I only need to build and make a Large Language Model do the work for me, which I can do efficiently.
-                                                I research improving robustness of Code Generation Models, data poisoning attacks on LLMs and cognitive behavior of LLMs.
-                                                I am equally fascinated by the scale at which current models are being built. This has drawn me towards distributed systems and parallel computing,
-                                                and I have completed a couple of projects as part of course work.
-                                                <br>
-                                                In free time, I like to explore new places, hike, play <a href="https://www.chess.com/member/manikantaloya"> chess </a> and create <a href="https://www.pinterest.com/mani6918/art/">art</a>.
-                                            </p>
-                                            <p>
-                                                I am passionate about acquiring knowledge and building software that makes people's life better. The following quotes inspire me to the best version of myself, 
-                                                hopefully they inspire you too:
-                                                <br>
-                                                <center><i>"You were born an original, don't die a copy."</i> - John Mason.</center>
-                                                <br>
-                                                I see myself as a lifelong learner. In fact, everyone needs to be, or else the future ChatGPTs capabilities will be limited(they learn from what we produce!). I will be graduating in June 2023. Please
-                                                feel free to contact me if you have an exciting opportunity that can help me grow and achieve my dream of helping others.
-                                            </p>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="colorlib-experience" data-section="work_experience">
-                    <div class="colorlib-narrow-content">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                                data-animate-effect="fadeInRight">
-                                <h2 class="colorlib-heading">Work experience</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="timeline-centered">
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-briefcase3"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2><a href="https://ucinlp.github.io/" style="color: #000000">
-                                                        GSR @ UCI NLP Lab
-                                                    </a>
-                                                    <span style="float: right">[Sep 2022 - Present]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Large Language Models have attracted lot of attention these days and have been deployed to serve wide variety of tasks. One such task is Code Completion or Generation.</li>
-                                                    <li>Most of these models are trained on publicly available sources like Github, limiting their capabilities by the content present in these sources.</li>
-                                                    <li>An adversary can easily introduce poisonous data to model's training by simply making it available online.</li>
-                                                    <li>As part of this research project we investigate resilience of Code Generation Models like <a href="https://sites.google.com/view/incoder-code-models">Incoder</a>, <a href="https://github.com/salesforce/CodeT5">CodeT5</a></li>
-                                                    and develop ways to prevent such attacks.
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-briefcase3"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2><a href="https://aws.amazon.com/"
-                                                        style="color: #000000">
-                                                        SDE Intern @ AWS, Amazon.com
-                                                    </a>
-                                                    <span style="float: right">[Jun 2022 - Sept 2022]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Spent Summer of 2022 designing, developing and testing bigdata application on large scale data for EBS Snapshot team.</li>
-                                                    <li>It was fun experience, there has been many first's - first time writing code in Java, working in AWS environment.</li>
-                                                    <li>We optimized the Garbage Collector workflow's runtime by 50% and cost by 60%.</li>
-                                                    <li>I studied partitioning, data schema for efficient storage of data and utilized Apache Spark & Hadoop to build the application.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-briefcase3"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2><a href="https://ucinlp.github.io/" style="color: #000000">
-                                                        GSR @ UCI NLP Lab
-                                                    </a>
-                                                    <span style="float: right">[Jan 2022 - Jun 2022]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Built and maintained gamified platform - <a href="https://maestro-ai.github.io/">Maestro</a>, 
-                                                        an educative tool for teaching Adversarial Machine Learning</li>
-                                                    <li>Designed adversarial attacks and defenses for Image classification tasks modelled on 
-                                                        LeNet5 & VGG-11 DNN architectures</li>
-                                                    <li>Poster titled <a href="https://dl.acm.org/doi/10.1145/3545947.3576265">
-                                                        Design Factors of Maestro: A Serious Game for Robust AI Education</a> was presented in 
-                                                        <a href="https://sigcse2023.sigcse.org/">SIGCSE 2023</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-briefcase3"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2><a href="https://research.samsung.com/sri-d" style="color: #000000">
-                                                        Software Engineer @ SAMSUNG Research Institute
-                                                    </a>
-                                                    <span style="float: right">[July 2017 - Sept 2020]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Designed and developed interface for 4G cellular dongles into Samsung TV and maintained 3G dongle support</li>
-                                                    <li>Optimized performance and boosted reliability of wireless & cellular internet connection. 
-                                                        Recommended network changes and reduced internet connection time for cellular networks by 
-                                                        83%</li>
-                                                    <li>Lead the development of 5G Cellular Dongle integration to Samsung TV's</li>
-                                                    <li>Studied modem protocols such as MBIM, QMI and integrated into TV stack to achieve best results. 
-                                                        Projects were showcased in CES 2020 ('5G-8K TV', 'Callar for Sero TV' (AR video call))</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <article class="timeline-entry begin animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-none">
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="colorlib-experience" data-section="publications">
-                    <div class="colorlib-narrow-content">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                                data-animate-effect="fadeInRight">
-                                <h2 class="colorlib-heading">Publications</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="timeline-centered">
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner"
-                                            id="design_factors_of_maestro">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-paper"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2>
-                                                    <a href="https://dl.acm.org/doi/10.1145/3545947.3576265"
-                                                        style="color: #000000">
-                                                        Design Factors of Maestro: A Serious Game for Robust AI Education
-                                                    </a>
-                                                    <span style="float: right">[Published in SIGCSE 2023]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Designed and developed open-source game-based platform, Maestro, for robust AI training in higher education</li>
-                                                    <li>Published in <u><a href="https://dl.acm.org/doi/10.1145/3545947.3576265">Special Interest Group on Computer Science Education (SIGCSE)</a></u></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                <!--
-                                    <article class="timeline-entry begin animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-none">
-                                            </div>
-                                        </div>
-                                    </article>
-                                -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="colorlib-experience" data-section="projects">
-                    <div class="colorlib-narrow-content">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                                data-animate-effect="fadeInRight">
-                                <h2 class="colorlib-heading animate-box">Projects</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="timeline-centered">
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner" id="multi-image-generation">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-bulb"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2>
-                                                    Multi-Image Generation using Cycle GAN
-                                                    <span style="float: right">[Mar 2022 - June 2022]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Designed and implemented Augmented Cycle GAN to learn and 
-                                                        generate many to many mappings of two domain using noise.</li>
-                                                    <li>Injected noise acts as latent variable controlling image generation and 
-                                                        varying it produces different versions of single image.</li>
-                                                    <li>Analyzed performance of the system on Edges2Shoes, Night2Day, CelebA and FERDB datasets</li>
-                                                    <li>Code is available in <u><a
-                                                                href="https://github.com/manikanta-72/multi-image-generation">manikanta-72/multi-image-generation</a></u>
-                                                        repository</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner" id="distributed-chat-application">
-                                            <div class="timeline-icon color-9">
-                                                <i class="icon-bulb"></i>
-                                            </div>
-                                            <div class="timeline-label">
-                                                <h2>
-                                                    Distributed Multi-Room Chat Application
-                                                    <span style="float: right">[Jan 2023 - Mar 2023]</span>
-                                                </h2>
-                                                <ul style="color: #000000">
-                                                    <li>Designed and implemented a multi-room chat web application 
-                                                        in distributed environment and deployed it in AWS EC2 instances.</li>
-                                                    <li>Publish and Subscribe architecture was implemented using Apache Kafka 
-                                                        as the messaging middleware.</li>
-                                                    <li>Java-spring boot and React were used as backend and frontend.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    
-                                <!--
-                                    <article class="timeline-entry begin animate-box" data-animate-effect="fadeInRight">
-                                        <div class="timeline-entry-inner">
-                                            <div class="timeline-icon color-none">
-                                            </div>
-                                        </div>
-                                    </article>
-                                -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
+
+            <!-- EVIDIUM -->
+            <div class="panel" id="panel-evidium">
+                <div class="panel-inner">
+                    <div class="cmt"># experience/02_evidium.md</div>
+                    <br>
+                    <h1>ML Research Engineer</h1>
+                    <p class="lead"><span class="kw">Evidium</span> &nbsp;·&nbsp; San Francisco, CA &nbsp;·&nbsp; Aug 2023 – May 2025</p>
+                    <hr class="divider">
+                    <ul>
+                        <li>Architected and deployed end-to-end ML across research, training, and production for three clinical AI products at an early-stage healthcare startup.</li>
+                        <li>Built a <strong>NEL pipeline</strong> mapping clinical text to 400K+ medical entities with constrained decoding via restriction tries.</li>
+                        <li>Trained <strong>GNNs</strong> on a proprietary knowledge graph, fusing graph embeddings with a T5 encoder-decoder via cross-modal retrieval for entity linking; F1 improved by <strong>10%</strong>.</li>
+                        <li>Fine-tuned BERT for <strong>Nested NER</strong> to detect overlapping and nested entities (80% F1).</li>
+                        <li>Built a clinical AI chatbot powered by <strong>RAG</strong> with HyDE query expansion, FAISS vector retrieval, and an LLM self-critique layer for evidence reranking and hallucination reduction.</li>
+                        <li>Built an OCR-based pipeline to extract and reconstruct structured data from <strong>300GB+</strong> of hospital ER reports, powering automated care quality scoring.</li>
+                        <li>Scaled multi-node distributed training across <strong>multi-node A800 GPUs</strong> using FSDP with tensor and data parallelism.</li>
+                        <li>Extended LLM inference engine with token caching, continuous batching, and streaming, cutting inference latency by <strong>31%</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- UCI -->
+            <div class="panel" id="panel-uci">
+                <div class="panel-inner">
+                    <div class="cmt"># experience/03_uci_research.md</div>
+                    <br>
+                    <h1>Graduate Student Researcher</h1>
+                    <p class="lead"><span class="kw">UC Irvine</span> &nbsp;·&nbsp; Irvine, CA &nbsp;·&nbsp; Mar 2022 – Sep 2023</p>
+                    <hr class="divider">
+                    <p>Advised by <strong>Prof. Sameer Singh</strong> (NLP Lab, DARPA-funded) and <strong>Prof. Richard Futrell</strong> (Linguistics Dept, NSF-funded).</p>
+                    <ul>
+                        <li>Researched adversarial ML security on code LLMs (Incoder, PolyCoder); evaluated backdoor trigger injection and clean-label data poisoning attacks.</li>
+                        <li>Built <a href="https://maestro-ai.github.io/" class="tl">Maestro</a>, an open-source platform for adversarial AI education with gamified red-teaming assignments and competitive leaderboards. <strong>Published at AAAI EAAI 2023.</strong></li>
+                        <li>Analyzed decision-making sensitivity of LLMs to prompt variations on the Horizon task; demonstrated human-like exploration-exploitation tradeoffs. <strong>Published at EMNLP Findings 2023.</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AMAZON -->
+            <div class="panel" id="panel-amazon">
+                <div class="panel-inner">
+                    <div class="cmt"># experience/04_amazon.md</div>
+                    <br>
+                    <h1>Software Developer Intern</h1>
+                    <p class="lead"><span class="kw">Amazon</span> &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; Jun 2022 – Sep 2022</p>
+                    <hr class="divider">
+                    <ul>
+                        <li>Redesigned the <strong>EBS Snapshot</strong> big data pipeline using Hadoop, Apache Spark, and AWS.</li>
+                        <li>Optimized data partitioning, load balancing, and MapReduce strategies: <strong>50% runtime reduction</strong> and <strong>60% cost savings</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SAMSUNG -->
+            <div class="panel" id="panel-samsung">
+                <div class="panel-inner">
+                    <div class="cmt"># experience/05_samsung.md</div>
+                    <br>
+                    <h1>Software Engineer</h1>
+                    <p class="lead"><span class="kw">Samsung Research</span> &nbsp;·&nbsp; Delhi, India &nbsp;·&nbsp; Jul 2017 – Sep 2020</p>
+                    <hr class="divider">
+                    <ul>
+                        <li>Led development of <strong>4G and 5G cellular dongle interfaces</strong> for Samsung TV; integrated MBIM and QMI modem protocols, reducing network connection time by <strong>83%</strong>.</li>
+                        <li>Showcased at <strong>CES 2020</strong>: '5G-8K TV' and 'Callar for Sero TV' AR video call.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PUBLICATIONS -->
+            <div class="panel" id="panel-publications">
+                <div class="panel-inner">
+                    <div class="cmt"># publications.md</div>
+                    <br>
+                    <h1>Publications</h1>
+                    <hr class="divider">
+
+                    <div class="pub">
+                        <span class="pub-venue">EMNLP Findings 2023</span>
+                        <p class="pub-title">Exploring the Sensitivity of LLMs' Decision-Making Capabilities: Insights from Prompt Variations and Hyperparameters</p>
+                        <p class="pub-authors">Manikanta Loya, Divya Sinha, Richard Futrell</p>
+                        <p>Analyzed decision-making sensitivity of LLMs to prompt variations and hyperparameters on the Horizon task. Demonstrated that LLMs exhibit human-like exploration-exploitation tradeoffs with simple prompt adjustments.</p>
+                    </div>
+
+                    <div class="pub">
+                        <span class="pub-venue">AAAI EAAI 2023</span>
+                        <p class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3545947.3576265">Maestro: A Gamified Platform for Teaching AI Robustness</a></p>
+                        <p class="pub-authors">Margarita Geleta, Jiacen Xu, Manikanta Loya, Junlin Wang, Sameer Singh, Zhou Li, Sergio Gago-Masague</p>
+                        <p>Open-source gamified platform for adversarial AI education with hands-on attack-defense exercises and competitive leaderboards. Adopted as a teaching resource for AI safety and robustness courses.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT: CycleGAN -->
+            <div class="panel" id="panel-proj_cyclegan">
+                <div class="panel-inner">
+                    <div class="cmt"># projects/cycle_gan.py &nbsp;·&nbsp; Mar – Jun 2022</div>
+                    <div class="cmt"># <a href="https://github.com/manikanta-72/multi-image-generation" class="tl">github.com/manikanta-72/multi-image-generation</a></div>
+                    <br>
+                    <h1>Multi-Image Generation using Cycle GAN</h1>
+                    <hr class="divider">
+                    <p>Augmented CycleGAN to learn many-to-many domain mappings using noise as a latent variable. Injecting different noise values produces different versions of the target image from a single source.</p>
+                    <p>Evaluated on <strong>Edges2Shoes</strong>, <strong>Night2Day</strong>, <strong>CelebA</strong>, and <strong>FERDB</strong> datasets.</p>
+
+                    <div class="code-block">
+                        <div class="code-hd"><span>cycle_gan.py</span><span>Python · PyTorch</span></div>
+                        <pre><code><span class="kw">class</span> <span class="cn">AugmentedCycleGAN</span>(nn.Module):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="cn">self</span>, latent_dim=<span class="num">8</span>):
+        <span class="kw">super</span>().<span class="fn">__init__</span>()
+        <span class="cn">self</span>.gen_AB = <span class="fn">Generator</span>(latent_dim)   <span class="cm"># A → B</span>
+        <span class="cn">self</span>.gen_BA = <span class="fn">Generator</span>(latent_dim)   <span class="cm"># B → A</span>
+        <span class="cn">self</span>.disc_A = <span class="fn">Discriminator</span>()
+        <span class="cn">self</span>.disc_B = <span class="fn">Discriminator</span>()
+
+    <span class="kw">def</span> <span class="fn">forward</span>(<span class="cn">self</span>, x_A, z):
+        <span class="str">"""Many-to-many mapping via noise latent z."""</span>
+        x_AB  = <span class="cn">self</span>.gen_AB(x_A, z)   <span class="cm"># translate + condition on z</span>
+        x_ABA = <span class="cn">self</span>.gen_BA(x_AB, z)  <span class="cm"># reconstruct</span>
+        <span class="kw">return</span> x_AB, x_ABA</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT: Distributed Chat -->
+            <div class="panel" id="panel-proj_chat">
+                <div class="panel-inner">
+                    <div class="cmt"># projects/dist_chat.java &nbsp;·&nbsp; Jan – Mar 2023</div>
+                    <br>
+                    <h1>Distributed Multi-Room Chat Application</h1>
+                    <hr class="divider">
+                    <p>Multi-room chat app deployed on <strong>AWS EC2</strong>. Pub/sub architecture using Apache Kafka as messaging middleware; partitioned topics per room ensure message ordering and horizontal scalability.</p>
+                    <p><strong>Stack:</strong> Java Spring Boot · React · Apache Kafka · AWS EC2</p>
+
+                    <div class="code-block">
+                        <div class="code-hd"><span>ChatConsumer.java</span><span>Java · Spring Boot</span></div>
+                        <pre><code><span class="cm">// Kafka consumer: one listener per chat room</span>
+<span class="kw">@KafkaListener</span>(topics = <span class="str">"#{roomId}"</span>, groupId = <span class="str">"chat-group"</span>)
+<span class="kw">public void</span> <span class="fn">consume</span>(<span class="cn">String</span> message,
+                      <span class="kw">@Header</span>(<span class="str">"roomId"</span>) <span class="cn">String</span> roomId) {
+    <span class="cn">ChatMessage</span> msg = mapper.<span class="fn">readValue</span>(message, <span class="cn">ChatMessage</span>.class);
+    webSocket.<span class="fn">broadcast</span>(roomId, msg);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="panel" id="panel-contact">
+                <div class="panel-inner">
+                    <div class="cmt">#!/bin/bash</div>
+                    <div class="cmt"># contact.sh: reach out, I read everything</div>
+                    <br>
+                    <div class="term-block">
+                        <div><span class="kw">EMAIL</span>=<span class="str">"mani.4272@gmail.com"</span></div>
+                        <div><span class="kw">LINKEDIN</span>=<span class="str">"linkedin.com/in/manikantaloya"</span></div>
+                        <div><span class="kw">GITHUB</span>=<span class="str">"github.com/manikanta-72"</span></div>
+                        <div><span class="kw">SCHOLAR</span>=<span class="str">"scholar.google.com/citations?user=Z4OjKfcAAAAJ"</span></div>
+                        <br>
+                        <div><span class="fn">echo</span> <span class="str">"📧 $EMAIL"</span></div>
+                        <div><span class="fn">echo</span> <span class="str">"💼 $LINKEDIN"</span></div>
+                        <div><span class="fn">echo</span> <span class="str">"🐙 $GITHUB"</span></div>
+                        <div><span class="fn">echo</span> <span class="str">"📚 $SCHOLAR"</span></div>
+                        <div class="term-out">
+                            <div>📧 &nbsp;<a href="mailto:mani.4272@gmail.com">mani.4272@gmail.com</a></div>
+                            <div>💼 &nbsp;<a href="https://www.linkedin.com/in/manikantaloya/">linkedin.com/in/manikantaloya</a></div>
+                            <div>🐙 &nbsp;<a href="https://github.com/manikanta-72">github.com/manikanta-72</a></div>
+                            <div>📚 &nbsp;<a href="https://scholar.google.com/citations?user=Z4OjKfcAAAAJ&hl=en">Google Scholar</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div><!-- /.ide-body -->
+
+    <!-- ── STATUS BAR ─────────────────────────────────────── -->
+    <div class="status-bar">
+        <div class="sb-l">
+            <span>⎇ main</span>
+            <span><span class="dot-g">●</span> 0 errors</span>
+        </div>
+        <div class="sb-c" id="status-text">Reading Mode</div>
+        <div class="sb-r">
+            <span>UTF-8</span>
+            <span id="word-count">...</span>
         </div>
     </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.countTo.js"></script>
-    <script src="js/main.js"></script>
-    <!--<script src="js/index.js"></script>-->
-</body>
+</div><!-- /.ide -->
 
+<script src="js/terminal.js"></script>
+</body>
 </html>
