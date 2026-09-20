@@ -1,0 +1,14 @@
+---
+import { profile, sections } from '../data/site';
+---
+
+<nav class="sectionbar" aria-label="Sections">
+  {sections.map((s) => (
+    <a href={`#${s.id}`} data-nav={s.id}>
+      {s.label}
+    </a>
+  ))}
+  <a class="bar-resume" href={profile.resume} target="_blank" rel="noopener">
+    Resume
+  </a>
+</nav>

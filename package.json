@@ -1,0 +1,29 @@
+{
+  "name": "manikanta-loya-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "upgrade": "npx @astrojs/upgrade && npm update && npm audit"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^7.3.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "prettier": "^3.9.8",
+    "prettier-plugin-astro": "^1.0.1",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

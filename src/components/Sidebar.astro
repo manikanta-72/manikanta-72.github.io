@@ -1,0 +1,39 @@
+---
+import { profile, sections } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<aside class="sidebar">
+  <img class="avatar" src={profile.photo} width="296" height="296" alt={`Photo of ${profile.name}`} />
+  <p class="wordmark">
+    <a href="/">{profile.name}</a>
+  </p>
+  <p class="tagline">
+    {profile.role} <a href={profile.company.url}>@ {profile.company.name}</a>
+  </p>
+
+  <nav aria-label="Sections">
+    <ul>
+      {sections.map((s) => (
+        <li>
+          <a href={`#${s.id}`} data-nav={s.id}>
+            {s.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a class="resume-link" href={profile.resume} target="_blank" rel="noopener">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="socials">
+    {profile.social.map((s) => (
+      <a href={s.href} aria-label={s.label} rel="me noopener">
+        <Icon name={s.icon} />
+      </a>
+    ))}
+  </div>
+</aside>

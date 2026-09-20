@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import '../../styles/post.css';
+import { profile } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const minutes = Math.max(1, Math.round(post.body!.split(/\s+/).length / 200));
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+<Base title={`${post.data.title} | ${profile.name}`} description={post.data.description}>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="in">
+      <a class="home" href="/">
+        <img src={profile.photo} alt="" />
+        <span>{profile.name}</span>
+      </a>
+      <nav aria-label="Site">
+        <a href="/#about">About</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#experience">Experience</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="postwrap" id="main">
+    <article class="post">
+      <div class="postmeta">
+        {post.data.tag && <span class="tag">{post.data.tag}</span>}
+        <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+        <span>{minutes} min read</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="description">{post.data.description}</p>
+      <div class="byline">
+        <img src={profile.photo} alt="" />
+        <div>
+          <b>{profile.name}</b>
+          <span>
+            {profile.role} at {profile.company.name}
+          </span>
+        </div>
+      </div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <nav class="postend" aria-label="More">
+        <a href="/#writing">
+          <small>&larr; Back</small>All writing
+        </a>
+        <a class="next" href="/">
+          <small>Home &rarr;</small>
+          {profile.name}
+        </a>
+      </nav>
+    </article>
+
+    {toc.length > 0 && (
+      <aside class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          {toc.map((h) => (
+            <li class={`depth-${h.depth}`}>
+              <a href={`#${h.slug}`} data-toc={h.slug}>
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </aside>
+    )}
+  </div>
+
+  <script>
+    const bar = document.getElementById('progress')!;
+    const article = document.querySelector('article.post')!;
+    const tocLinks = [...document.querySelectorAll('[data-toc]')] as HTMLAnchorElement[];
+    const heads = [...document.querySelectorAll('.prose h2[id], .prose h3[id]')] as HTMLElement[];
+
+    function onScroll() {
+      const r = article.getBoundingClientRect();
+      const total = r.height - innerHeight;
+      bar.style.transform = `scaleX(${total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1})`;
+
+      let current = heads[0];
+      for (const h of heads) if (h.getBoundingClientRect().top < innerHeight * 0.3) current = h;
+      for (const a of tocLinks)
+        a.setAttribute('aria-current', String(current && a.dataset.toc === current.id));
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</Base>

@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import type { Entry } from '../data/site';
+interface Props {
+  entry: Entry;
+  icon?: string;
+}
+const { entry, icon = 'briefcase' } = Astro.props;
+---
+
+<article class="entry">
+  <span class="bullet" aria-hidden="true">
+    <Icon name={icon} />
+  </span>
+  <div class="card">
+    <h3>
+      <span class="date">{entry.date}</span>
+      {entry.href ? <a href={entry.href}>{entry.title}</a> : entry.title}
+    </h3>
+    {entry.meta && <p class="authors">{entry.meta}</p>}
+    <ul>
+      {entry.points.map((p) => (
+        <li set:html={p} />
+      ))}
+    </ul>
+  </div>
+</article>
