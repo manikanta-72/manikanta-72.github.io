@@ -3,7 +3,7 @@ title: 'Sample post: hybrid retrieval with reciprocal rank fusion'
 description: 'Keyword search and vector search fail in different ways. Fusing their rankings is a cheap, robust way to get the best of both, and it takes about ten lines of code.'
 date: 2026-09-19
 tag: Retrieval
-draft: false
+draft: true
 ---
 
 > This is a **sample post** that shows how writing looks on this site: headings, code, tables, quotes and lists. Delete this file and drop in your own markdown.
